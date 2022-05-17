@@ -1,0 +1,43 @@
+<!doctype html>
+  <head>
+    <title>Ejobs Clone</title>
+  </head>
+  <body>
+    <nav>
+      <div class="container">
+        <a class="navbar" href="/">Ejobs</a>
+      </div>
+    </nav>
+
+    <div class="container">
+        <form action="/apply/form/" method="post">
+          {% csrf_token %}
+            <div>
+                <label>First Name:</label><br>
+                <input class="form" type="text" name="first_name"><br>
+            </div>
+            <div>
+                <label>Last Name:</label><br>
+                <input class="form" type="text" name="last_name"><br>
+            </div>
+            <div>
+                <label>University:</label><br>
+                <input class="form" type="text" name="university"><br>
+            </div>
+            <div>
+                <label>Company name:</label><br>
+                <select class="form" name="company_name"><br>
+                     {% for company in companies %}
+                       <option value="{{ company.name }}">{{ company.name }}</option>
+                     {% endfor %}
+                </select>
+            </div>
+            <div>
+                <label>Position:</label><br>
+                <input class="form" type="text" name="position"><br>
+            </div>
+            <button type="submit" class="btn">Submit</button>
+        </form>
+    </div>
+  </body>
+</html>
