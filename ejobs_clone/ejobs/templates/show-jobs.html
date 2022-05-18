@@ -1,61 +1,97 @@
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <title>Ejobs Clone</title>
-  </head>
-  <body>
-    <nav>
-      <div class="container">
-        <a class="navbar" href="/">Ejobs</a>
-      </div>
-    </nav>
+</head>
+<body>
 
+<style>
+    .form {
+        padding-top: 20px;
+        text-align: center;
+    }
+
+    body {
+        background-color: #70ABAF;
+        font-family: "Times New Roman", sans-serif;
+        padding-top: 50px;
+    }
+
+    .navigation {
+        list-style: none;
+        text-align: center;
+        padding: 1px;
+    }
+
+
+    .navigation li {
+        display: inline;
+        padding: 0 30px;
+        margin: 0 30px;
+    }
+
+
+    .navigation a {
+        color: darkslategray;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .navigation a:hover {
+        color: #F0F7F4;
+    }
+</style>
+
+<div class="col-md-12">
+    <ul class="navigation">
+        <li><a href="/">Home</a></li>
+        <li><a href="apply/">Apply to a job!</a></li>
+        <li><a href="show-jobs/">See all the jobs</a></li>
+    </ul>
+</div>
+
+<div class="form">
+    <p>Here you can see the jobs:</p><br>
+
+    <form action="/show-jobs/" method="post">
+        {% csrf_token %}
+        <div class="mb">
+            <label>Last Name:</label><br>
+            <input class="form" type="text" name="last_name"><br>
         </div>
-      </div>
-    </nav>
+        <div class="mb">
+            <label>First Name:</label><br>
+            <input class="form" type="text" name="first_name"><br>
+        </div>
+        <button type="submit" class="btn">Submit</button>
+    </form>
 
-    <div class="container">
-        <p>Here you can see the jobs:</p><br>
+    {% if var %}
+    {% if jobs %}
+    <table class="table">
+        <head>
+            <tr>
+                <th scope="col">Position</th>
+                <th scope="col">Company</th>
+                <th scope="col">Description</th>
+            </tr>
+        </head>
+        <body>
+        {% for job in jobs %}
+        <tr>
+            <td>{{ job.position }}</td>
+            <td>{{ job.company.name }}</td>
+            <td>{{ job.description }}</td>
+        </tr>
+        {% endfor %}
+        </body>
+    </table>
+    {% else %}
+    <p>We don't have available jobs now... <a href="/apply/">applying </a> to one first!</p>
+    {% endif %}
 
-        <form action="/show-jobs/" method="post">
-            {% csrf_token %}
-            <div class="mb">
-                <label>Last Name:</label><br>
-                <input class="form" type="text" name="last_name"><br>
-            </div>
-            <div class="mb">
-                <label>First Name:</label><br>
-                <input class="form" type="text" name="first_name"><br>
-            </div>
-            <button type="submit" class="btn">Submit</button>
-        </form>
-
-        {% if var %}
-          {% if jobs %}
-            <table class="table">
-              <head>
-                <tr>
-                  <th scope="col">Position</th>
-                  <th scope="col">Company</th>
-                  <th scope="col">Description</th>
-                </tr>
-              </head>
-              <body>
-                {% for job in jobs %}
-                    <tr>
-                        <td>{{ job.position }}</td>
-                        <td>{{ job.company.name }}</td>
-                        <td>{{ job.description }}</td>
-                    </tr>
-                {% endfor %}
-              </body>
-            </table>
-          {% else %}
-            <p>We don't have available jobs now... <a href="/apply/">applying </a> to one first!</p>
-          {% endif %}
-
-        <a class="btn" href="/">Go back!</a>
-        {% endif %}
-    </div>
-  </body>
+    <a class="btn" href="/">Go back!</a>
+    {% endif %}
+</div>
+</body>
 </html>

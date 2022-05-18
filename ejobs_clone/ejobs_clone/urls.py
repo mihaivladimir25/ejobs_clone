@@ -15,16 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from ejobs.views import index, list_jobs, add_job, added_success, \
-    apply, application_successful, show_jobs
+from ejobs.views import index, list_jobs, apply, application_successful, show_jobs
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index),
     path('apply/', list_jobs),
-    path('add/', add_job),
-    path('add/success/', added_success),
     path('apply/form/', apply),
     path('apply/form/application-successful/', application_successful),
-    path('show-jobs/', show_jobs),
+    path('show-jobs/', show_jobs)
 ]

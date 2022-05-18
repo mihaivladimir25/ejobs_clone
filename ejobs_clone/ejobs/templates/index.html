@@ -6,33 +6,97 @@
 
 <style>
 
-    body{
-        background: yellow;
+    body {
+        background-color: #70ABAF;
         font-family: "Times New Roman", sans-serif;
         padding-top: 50px;
     }
 
-    .navbar{
+    .navigation {
         list-style: none;
         text-align: center;
-        text-size: 1000%;
+        padding: 1px;
     }
+
+
+    .navigation li {
+        display: inline;
+        padding: 0 30px;
+        margin: 0 30px;
+    }
+
+
+    .navigation a {
+        color: darkslategray;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .navigation a:hover {
+        color: #F0F7F4;
+    }
+
+    .icon {
+        background-color: white;
+        padding: 40px 0;
+    }
+
+    .icon .title {
+        background-color: #99E1D9;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .icon .img {
+        width: 100px;
+        height: auto;
+
+    }
+
+    .icon h1 {
+        color: #343a40;
+        font-size: 28px;
+    }
+
 
 </style>
 
 <body>
 
-    <nav class="navbar">
-        <div class="container_2">
-            <a href="/">EJOBS</a>
-        </div>
-    </nav>
+<div class="col-md-12">
+    <ul class="navigation">
+        <li><a href="/">Home</a></li>
+        <li><a href="apply/">Apply to a job!</a></li>
+        <li><a href="show-jobs/">See all the jobs</a></li>
+    </ul>
+</div>
 
-
+<div class="icon">
     <div class="container">
-        <a href="apply/">Apply to a job!</a>
-        <a href="show-jobs/">See all the jobs</a>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="title">
+                    <img src="static/fb.jpg" alt="">
+                    <p><b>Facebook angajeaza! Verifica posturile disponibile!</b></p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="title">
+                    <img src="static/bosch.jpg" alt="">
+                    <p><b>Bosch este in cautarea unui Junior FullStack Developer. Aplica acum!</b></p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="title">
+                    <img src="static/continental.jpg" alt="">
+                    <p><b>Continental isi cauta un nou Data Analyst! Poti aplica la noi pe site!</b></p>
+                </div>
+            </div>
+        </div>
     </div>
+</div>
 
 </body>
 </html>

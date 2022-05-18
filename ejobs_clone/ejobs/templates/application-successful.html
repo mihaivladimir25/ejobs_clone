@@ -1,39 +1,91 @@
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <title>Ejobs Clone</title>
-  </head>
-  <body>
-     <nav class="navbar">
-        <div class="container">
-            <a href="/">EJOBS</a>
+</head>
+
+<style>
+    body {
+        background-color: #70ABAF;
+        font-family: "Times New Roman", sans-serif;
+        padding-top: 50px;
+    }
+
+    .navigation {
+        list-style: none;
+        text-align: center;
+        padding: 1px;
+    }
+
+
+    .navigation li {
+        display: inline;
+        padding: 0 30px;
+        margin: 0 30px;
+    }
+
+
+    .navigation a {
+        color: darkslategray;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .navigation a:hover {
+        color: #F0F7F4;
+    }
+
+    .table {
+        width: 100%;
+        border: 1px solid;
+        text-align: center;
+
+
+    .bine {
+        padding-top: 50px;
+        text-align: center;
+    }
+
+</style>
+
+<body>
+<div class="col-md-12">
+    <ul class="navigation">
+        <li><a href="/">Home</a></li>
+        <li><a href="apply/">Apply to a job!</a></li>
+        <li><a href="show-jobs/">See all the jobs</a></li>
+    </ul>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <img src="static/yes.jpg" alt="">
         </div>
-    </nav>
-
-    <div class="container">
-        <p>Congratulations, you did it!</p>
-
-        <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">Position</th>
-                <th scope="col">Company</th>
-                <th scope="col">Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              {% for job in jobs %}
-                  <tr>
-                      <td>{{ job.position }}</td>
-                      <td>{{ job.company.name }}</td>
-                      <td>{{ job.description }}</td>
-                  </tr>
-              {% endfor %}
-            </tbody>
-        </table>
-
-    <a class="btn btn-primary" href="/">Back</a>
     </div>
+    <p class="bine">Congratulations, you did it!</p>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Position</th>
+            <th scope="col">Company</th>
+            <th scope="col">Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for job in jobs %}
+        <tr>
+            <td>{{ job.position }}</td>
+            <td>{{ job.company.name }}</td>
+            <td>{{ job.description }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 
-  </body>
+    <a class="btn" href="/">Back</a>
+</div>
+
+</body>
 </html>
